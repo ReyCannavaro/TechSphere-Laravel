@@ -22,7 +22,6 @@ class Gadget extends Model
         'harga',
         'description',
         'image',
-        'specifications',
         'is_featured',
     ];
 

@@ -31,7 +31,7 @@
                     <div class="gadget-item">
                         <a href="{{ route('gadgets.show', $gadget->slug) }}" class="gadget-link">
                             <div class="gadget-image-box">
-                                <img src="{{ asset('pict/' . $gadget->image) }}" alt="{{ $gadget->name }}">
+                                <img src="{{ asset('pict/gadget-images/' . $gadget->image) }}" alt="{{ $gadget->name }}">
                             </div>
                             <div class="gadget-info-card">
                                 <h3 class="gadget-name">{{ $gadget->name }}</h3>
