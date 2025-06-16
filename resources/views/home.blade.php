@@ -22,7 +22,7 @@
             @foreach($recommendedGadgets as $gadget)
                 <div class="produk">
                     <div class="produk-box">
-                        <img src="{{ asset('pict/' . $gadget->image) }}" alt="{{ $gadget->name }}">
+                        <img src="{{ asset('pict/gadget-images/' . $gadget->image) }}" alt="{{ $gadget->name }}">
                     </div>
                     <p class="product-name-rec">{{ $gadget->name }}</p>
                     @auth

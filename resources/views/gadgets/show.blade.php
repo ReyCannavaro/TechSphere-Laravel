@@ -8,7 +8,7 @@
     <div class="gadget-detail-container-modern">
         <div class="gadget-header-modern">
             <div class="gadget-image-wrapper">
-                <img src="{{ asset('pict/' . $gadget->image) }}" alt="{{ $gadget->name }}" class="gadget-detail-image-modern">
+                <img src="{{ asset('pict/gadget-images/' . $gadget->image) }}" alt="{{ $gadget->name }}" class="gadget-detail-image-modern">
             </div>
             <div class="gadget-info-modern">
                 <h1 class="gadget-title">{{ $gadget->name }}</h1>

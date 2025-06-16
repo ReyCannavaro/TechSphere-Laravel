@@ -52,15 +52,11 @@ class GadgetResource extends Resource
                                 Forms\Components\RichEditor::make('description')
                                     ->label('Deskripsi Lengkap')
                                     ->columnSpanFull()
-                                    // PERBAIKAN UTAMA: Hapus metode toolbar() yang sudah usang.
-                                    // Gunakan toolbarButtons() jika ingin kustomisasi,
-                                    // atau cukup hapus baris ini untuk toolbar default Filament v3+.
-                                    // Saya memilih untuk menggunakan toolbarButtons dengan opsi umum.
                                     ->toolbarButtons([
                                         'blockquote',
                                         'bold',
                                         'bulletList',
-                                        'codeBlock', // Jika Anda mengizinkan blok kode
+                                        'codeBlock',
                                         'h1',
                                         'h2',
                                         'italic',
@@ -70,7 +66,6 @@ class GadgetResource extends Resource
                                         'strike',
                                         'underline',
                                         'undo',
-                                        // 'media', // Hanya tambahkan ini jika Anda menginstal plugin media Filament
                                     ])
                                     ->nullable(),
                             ])->columns(2), // Ini akan membuat 2 kolom di dalam section "Detail Gadget"
@@ -115,18 +110,18 @@ class GadgetResource extends Resource
                                 // Maka tambahkan ini:
                                 /*
                                 Forms\Components\FileUpload::make('gallery_images')
-                                     ->label('Gambar Galeri')
-                                     ->multiple()
-                                     ->image()
-                                     ->directory('gadget-gallery')
-                                     ->disk('public')
-                                     ->visibility('public')
-                                     ->imageEditor()
-                                     ->imageEditorAspectRatios([
-                                         '16:9', '4:3', '1:1'
-                                     ])
-                                     ->nullable()
-                                     ->helperText('Upload gambar tambahan untuk galeri gadget (Max 5MB per gambar).')
+                                   ->label('Gambar Galeri')
+                                   ->multiple()
+                                   ->image()
+                                   ->directory('gadget-gallery')
+                                   ->disk('public')
+                                   ->visibility('public')
+                                   ->imageEditor()
+                                   ->imageEditorAspectRatios([
+                                       '16:9', '4:3', '1:1'
+                                   ])
+                                   ->nullable()
+                                   ->helperText('Upload gambar tambahan untuk galeri gadget (Max 5MB per gambar).')
                                 */
                             ]),
 
@@ -153,6 +148,8 @@ class GadgetResource extends Resource
                                     ->helperText('Pilih kategori yang sesuai untuk gadget ini.'),
                             ]),
 
+                        // ===== BAGIAN INI DIHAPUS KARENA MENGHAPUS KOLOM 'SPECIFICATIONS' =====
+                        /*
                         Forms\Components\Section::make('Spesifikasi Teknis')
                             ->schema([
                                 Forms\Components\KeyValue::make('specifications')
@@ -162,6 +159,8 @@ class GadgetResource extends Resource
                                     ->nullable()
                                     ->helperText('Tambahkan spesifikasi teknis penting dalam format Pasangan Kunci-Nilai. Disimpan sebagai JSON.'),
                             ]),
+                        */
+                        // =====================================================================
                     ])->columnSpan(1), // Group ini mengambil 1 dari 3 kolom utama
             ])->columns(3); // Total kolom utama layout
     }
@@ -199,7 +198,7 @@ class GadgetResource extends Resource
                 Tables\Columns\TextColumn::make('average_rating') // Tambahkan kolom untuk rata-rata rating
                     ->label('Rating Rata-rata')
                     ->badge()
-                    ->color(fn (?string $state): string => match (true) { // Menggunakan match true untuk rentang nilai
+                    ->color(fn (?string $state): string => match (true) {
                         $state >= 4.0 => 'success',
                         $state >= 3.0 => 'info',
                         $state >= 2.0 => 'warning',
@@ -253,8 +252,8 @@ class GadgetResource extends Resource
                                 $data['min_rating'],
                                 fn (Builder $query, $minRating): Builder => $query->whereHas('ratings', function ($query) use ($minRating) {
                                     $query->selectRaw('AVG(rating) as avg_rating')
-                                          ->groupBy('gadget_id')
-                                          ->havingRaw('AVG(rating) >= ?', [$minRating]);
+                                            ->groupBy('gadget_id')
+                                            ->havingRaw('AVG(rating) >= ?', [$minRating]);
                                 })
                             );
                     }),
