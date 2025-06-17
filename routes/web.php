@@ -1,12 +1,12 @@
 <?php
 
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\PraloginController;
+// use App\Http\Controllers\PraloginController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\GadgetController;
 use App\Http\Controllers\RatingController;
 use App\Http\Controllers\UserGadgetController;
-use App\Http\Controllers\AdminController;
+// use App\Http\Controllers\AdminController;
 // use App\Http\Controllers\CategoriesController; // Ini sudah dikomentari sebelumnya
 // use App\Http\Controllers\RatingsController as AdminRatingsController; // <-- BARIS INI DIHAPUS/DIKOMENTARI
 
@@ -32,7 +32,7 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 // Halaman Pralogin
-Route::get('/pralogin', [PraloginController::class, 'pralogin'])->name('pralogin');
+// Route::get('/pralogin', [PraloginController::class, 'pralogin'])->name('pralogin');
 
 // Halaman detail gadget spesifik (aksesibel untuk semua user, login/belum)
 // Form rating hanya akan tampil jika user sudah login (diatur di view gadgets.show)
@@ -86,7 +86,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     // Dashboard admin (nama rute tetap 'dashboard' dengan prefix 'admin.')
     // Jika Anda ingin menggunakan Dashboard bawaan Filament, Anda bisa menghapus baris ini
     // dan biarkan Filament secara otomatis menangani dashboard utamanya.
-    Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
+    // Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
 
     // CATATAN PENTING:
     // Semua rute CRUD untuk Gadget, Kategori, dan Rating sekarang ditangani oleh Filament Resources.
