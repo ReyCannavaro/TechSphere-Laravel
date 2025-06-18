@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title', 'TechSphere')</title>
     {{-- Mengimpor font Poppins dan Kalnia dari Google Fonts --}}
+    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Kalnia:wght@700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     {{-- Link ke file CSS utama kita --}}
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
