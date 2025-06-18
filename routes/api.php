@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\GadgetController;
@@ -20,3 +21,9 @@ Route::post('gadgets', [GadgetController::class, 'store']);
 Route::get('gadgets', [GadgetController::class, 'show']);
 Route::put('gadgets', [GadgetController::class, 'update']);
 Route::delete('gadgets', [GadgetController::class, 'destroy']);
+
+Route::get('users', [UserController::class, 'index']);
+Route::post('users', [UserController::class, 'store']);
+Route::get('users', [UserController::class, 'show']);
+Route::put('users', [UserController::class, 'update']);
+Route::delete('users', [UserController::class, 'destroy']);
