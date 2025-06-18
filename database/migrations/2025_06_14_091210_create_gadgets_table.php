@@ -18,7 +18,7 @@ return new class extends Migration
             $table->decimal('harga', 15, 2); 
             $table->text('description'); 
             $table->string('image')->nullable(); 
-            $table->json('specifications')->nullable();
+            $table->text('specifications')->nullable();
             $table->boolean('is_featured')->default(false); 
             $table->timestamps();
         });
