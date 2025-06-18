@@ -17,6 +17,6 @@ Route::delete('/category/{slug}', [CategoryController::class, 'destroy']);
 
 Route::get('gadgets', [GadgetController::class, 'index']);
 Route::post('gadgets', [GadgetController::class, 'store']);
-Route::get('gadgets/{id}', [GadgetController::class, 'show']);
-Route::put('gadgets/{id}', [GadgetController::class, 'update']);
-Route::delete('gadgets/{id}', [GadgetController::class, 'destroy']);
+Route::get('gadgets', [GadgetController::class, 'show']);
+Route::put('gadgets', [GadgetController::class, 'update']);
+Route::delete('gadgets', [GadgetController::class, 'destroy']);

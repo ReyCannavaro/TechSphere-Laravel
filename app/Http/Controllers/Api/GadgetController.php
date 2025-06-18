@@ -63,8 +63,17 @@ class GadgetController extends Controller
         ], 201);
     }
 
-    public function show(string $id)
+    public function show(Request $request)
     {
+        $id = $request->query('id');
+
+        if (!$id) {
+            return response()->json([
+                'status' => 400,
+                'message' => 'Parameter id is required'
+            ], 400);
+        }
+
         $gadget = Gadget::with('category')->find($id);
 
         if (!$gadget) {
@@ -81,8 +90,16 @@ class GadgetController extends Controller
         ]);
     }
 
-    public function update(Request $request, string $id)
+    public function update(Request $request)
     {
+        $id = $request->query('id');
+
+        if (!$id) {
+            return response()->json([
+                'status' => 400,
+                'message' => 'Parameter id is required'
+            ], 400);
+        }
         $gadget = Gadget::find($id);
 
         if (!$gadget) {
@@ -129,8 +146,15 @@ class GadgetController extends Controller
         ]);
     }
 
-    public function destroy(string $id)
+    public function destroy(Request $request)
     {
+        $id = $request->query('id');
+        if(!$id) {
+            return response()->json([
+                'status' => 400,
+                'massage' => 'parameter id is required'
+            ], 400); 
+        }
         $gadget = Gadget::find($id);
 
         if (!$gadget) {
